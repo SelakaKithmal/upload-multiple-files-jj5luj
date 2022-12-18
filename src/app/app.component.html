@@ -1,12 +1,18 @@
 <div>
-    <ng-container>
-        <input type="file" id="file" multiple 
-            (change)="getFileDetails($event)">
-
-        <button (click)="uploadFiles()">Upload</button>
-    </ng-container>
+  <ng-container>
+    <input
+      type="file"
+      id="file"
+      multiple
+      accept=".png, .jpg, .jpeg, .pdf"
+      (change)="getFileDetails($event)"
+    />
+    <input type="text" id="desc" [(ngModel)]="desc" />
+    <button (click)="uploadFiles()">Upload</button>
+  </ng-container>
 </div>
-<pre>{{myFiles | json}}</pre>
+<pre>{{ myFiles | json }}</pre>
 <div *ngFor="let file of myFiles">
-  <div>*  {{file.name}} - {{file.type}} - {{file.size}}</div> 
+    <p>{{file.name}}</p>
+  <img src="{{ file.img }}" alt="{{ file.name }}" height="80px" />
 </div>
